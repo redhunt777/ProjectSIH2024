@@ -1,0 +1,1 @@
+`Create a react-app using vite and make one react app but made different components for selling and buying pages.`
