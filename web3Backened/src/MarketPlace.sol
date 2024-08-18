@@ -48,7 +48,15 @@ contract FreelanceMarketplace {
     event PaymentReleased(uint256 orderId, uint256 amount);
 
     // Client posts a job
-    function postJob(string memory description, uint256 budget) external {
+    function postJob(
+        string memory description,
+        uint256 budget
+    ) external payable {
+        require(
+            msg.value >= budget,
+            "You need to send the exact budget in ETH!"
+        );
+
         jobs[jobCount] = Job({
             client: msg.sender,
             description: description,
@@ -56,7 +64,7 @@ contract FreelanceMarketplace {
             active: true
         });
 
-        emit JobPosted(jobCount, msg.sender, description, budget); // Emitting an event to notify the client that the job has been posted
+        emit JobPosted(jobCount, msg.sender, description, budget);
         jobCount++;
     }
 
