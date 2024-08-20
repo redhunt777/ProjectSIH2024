@@ -27,8 +27,8 @@ contract FreelanceMarketplace {
     uint256 public bidCount;
     uint256 public orderCount;
 
-    mapping(uint256 => Job) public jobs;
-    mapping(uint256 => Bid) public bids;
+    mapping(uint256 => Job) public jobs; // jobId to job details
+    mapping(uint256 => Bid) public bids; // bidId to bid details
     mapping(uint256 => Order) public orders;
 
     event JobPosted(
@@ -108,7 +108,6 @@ contract FreelanceMarketplace {
         orderCount++;
     }
 
-    // Freelancer marks job as completed
     function completeJob(
         uint256 orderId
     ) external orderExists(orderId) onlyFreelancer(orderId) {
@@ -119,19 +118,18 @@ contract FreelanceMarketplace {
         emit JobCompleted(orderId);
     }
 
-    // Client releases payment to freelancer
     function releasePayment(
         uint256 orderId
-    ) external payable orderExists(orderId) onlyOrderClient(orderId) {
+    ) external orderExists(orderId) onlyOrderClient(orderId) {
         Order storage order = orders[orderId];
         require(order.completed, "Job is not completed");
         require(!order.paid, "Payment already released");
-        require(msg.value == order.amount, "Incorrect payment amount");
-
         order.paid = true;
-        payable(order.freelancer).transfer(msg.value);
-
-        emit PaymentReleased(orderId, msg.value);
+        (bool callSuccess, ) = payable(msg.sender).call{value: order.amount}( // solhint-disable-line avoid-low-level-calls // solhint-disable-line reentrancy
+            ""
+        );
+        require(callSuccess, "Call failed");
+        emit PaymentReleased(orderId, order.amount);
     }
 
     modifier jobExists(uint256 jobId) {
