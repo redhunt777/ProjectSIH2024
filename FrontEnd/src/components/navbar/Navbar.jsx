@@ -34,7 +34,6 @@ function Navbar() {
           <Link className="link" to="/">
             <span className="text">ProLancer</span>
           </Link>
-          <span className="dot">.</span>
         </div>
         <div className="links">
           <span>ProLancer Business</span>
