@@ -1,10 +1,9 @@
-import React from 'react'
+import React from "react"
 import "./Register.scss"
-const Register = () => {
+
+function Register() {
   return (
-    <div className='register'>
-      Register
-    </div>
+    <div>Register</div>
   )
 }
 
