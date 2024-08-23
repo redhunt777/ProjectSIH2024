@@ -25,7 +25,7 @@ function Featured() {
           </div>
         </div>
         <div className="right">
-          <img src="./img/man.png" alt="" />
+          <img src="./img/Man.png" alt="" />
         </div>
       </div>
     </div>

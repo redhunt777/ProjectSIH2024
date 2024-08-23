@@ -117,11 +117,15 @@
     max-width: 1400px;
     padding: 10px 0px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; 
     color: rgb(30, 30, 30);
     font-weight: 400;
     font-family: "Montserrat", sans-serif;
     z-index: 998;
+
+    @include mobile{
+      display: none;
+    }
   }
 }
-
+//Media Queries
