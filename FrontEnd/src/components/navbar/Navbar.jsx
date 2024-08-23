@@ -32,7 +32,7 @@ function Navbar() {
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">ProLancer</span>
+            <span>ProLancer</span>
           </Link>
         </div>
         <div className="links">
@@ -64,7 +64,7 @@ function Navbar() {
                 <Link className="link" to="/messages">
                   Messages
                 </Link>
-                <Link className="link" to="/">
+                <Link className="link" to="/login">
                   Logout
                 </Link>
               </div>}

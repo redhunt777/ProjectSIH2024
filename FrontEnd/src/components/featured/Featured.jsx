@@ -1,5 +1,6 @@
 import React from "react";
 import "./Featured.scss";
+import { Link } from "react-router-dom";
 
 function Featured() {
   return (
@@ -18,10 +19,10 @@ function Featured() {
           </div>
           <div className="popular">
             <span>Popular:</span>
-            <button>Web Design</button>
-            <button>WordPress</button>
-            <button>Logo Design</button>
-            <button>AI Services</button>
+            <button><Link className="link" to={"/gigs"}>Web Design</Link></button>
+            <button><Link className="link" to={"/gigs"}>WordPress</Link></button>
+            <button><Link className="link" to={"/gigs"}>Logo Design</Link></button>
+            <button><Link className="link" to={"/gigs"}>AI Services</Link></button>
           </div>
         </div>
         <div className="right">
