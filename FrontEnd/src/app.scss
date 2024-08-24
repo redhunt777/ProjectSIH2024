@@ -1,0 +1,19 @@
+* {
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+html{
+  scroll-behavior: smooth;
+}
+@mixin mobile{
+  @media(max-width: 738px){
+    @content;
+  }
+}
+@mixin tablet{
+  @media(max-width:1024px){
+    @content;
+  }
+}
