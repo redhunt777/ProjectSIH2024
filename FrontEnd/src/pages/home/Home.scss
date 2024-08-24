@@ -48,6 +48,7 @@
       align-items: center;
       gap: 20px;
       flex-direction: column; /* Default for small screens */
+      padding: 0rem 0rem 0rem 4rem;
 
       .item {
         width: 100%;
@@ -106,7 +107,7 @@
   .explore {
     display: flex;
     justify-content: center;
-    padding: 100px 0;
+    padding: 100px 0px;
 
     .container {
       width: 100%;
@@ -114,6 +115,8 @@
 
       h1 {
         color: #555;
+        text-align: center;
+        padding: 10px;
       }
 
       .items {

@@ -52,7 +52,7 @@ function Footer() {
             <span>Community Standards</span>
           </div>
           <div className="item">
-            <h2>More From Fiverr</h2>
+            <h2>More From ProLancer</h2>
             <span>Prolancer Business</span>
             <span>Prolancer Pro</span>
             <span>Prolancer Logo Maker</span>
@@ -68,8 +68,8 @@ function Footer() {
         <hr />
         <div className="bottom">
           <div className="left">
-            <h2>Prolancer</h2>
-            <span>© Prolancer International Ltd. 2023</span>
+            <h2>ProLancer</h2>
+            <span>© ProLancer International Ltd. 2023</span>
           </div>
           <div className="right">
             <div className="social">

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   color: #666;
-  margin: 50px 0px;
+  margin: 50px 10px;
 
   img {
     width: 24px;
@@ -13,7 +13,7 @@
     width: 1400px;
     .top {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       .item {
         display: flex;
         flex-direction: column;
@@ -21,15 +21,17 @@
         h2 {
           font-size: 16px;
           color: #555;
+          
         }
         span {
           font-weight: 300;
+
         }
       }
     }
 
     hr {
-      margin: 50px 0px;
+      margin: 50px 1rem;
       height: 0;
       border: 1px solid #ebe9e9;
     }
@@ -37,16 +39,22 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin: 0rem 2rem;
 
       .left {
         width: max-content;
         display: flex;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
 
         span {
           font-size: 13px;
           white-space: nowrap;
+        }
+
+        h2{
+          font-weight: 900;
+          font-size: 28px;
         }
       }
       .right {
