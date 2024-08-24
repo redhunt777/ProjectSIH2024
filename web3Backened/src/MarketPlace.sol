@@ -29,7 +29,7 @@ contract FreelanceMarketplace {
 
     mapping(uint256 => Job) public jobs; // jobId to job details
     mapping(uint256 => Bid) public bids; // bidId to bid details
-    mapping(uint256 => Order) public orders;
+    mapping(uint256 => Order) public orders; // orderId to order details
 
     event JobPosted(
         uint256 jobId,
@@ -37,6 +37,7 @@ contract FreelanceMarketplace {
         string description,
         uint256 budget
     );
+
     event BidPlaced(
         uint256 bidId,
         uint256 jobId,
@@ -80,6 +81,23 @@ contract FreelanceMarketplace {
 
         emit BidPlaced(bidCount, jobId, msg.sender, amount);
         bidCount++;
+    }
+
+    function directPlaceOrder(uint256 jobId, uint256 amount) external payable {
+        Job storage job = jobs[jobId];
+        require(job.active, "Job is not active");
+
+        orders[orderCount] = Order({
+            client: job.client,
+            freelancer: msg.sender,
+            amount: amount,
+            completed: false,
+            paid: false
+        });
+
+        job.active = false;
+        emit JobCompleted(orderCount);
+        orderCount++;
     }
 
     // Client accepts a bid
