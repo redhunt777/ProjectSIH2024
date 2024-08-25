@@ -1,14 +1,18 @@
-.login-popup{
-    position: absolute;
+.login-popup {
+    position: fixed; /* Changed to fixed for better control */
     z-index: 999;
     width: 100%;
     height: 100%;
-    /* background-color: #00000090; */
-    display: grid;  
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background for contrast */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    top: 0;
+    left: 0;
 }
-.login-popup-container{
-    place-self: center;
-    width: max(23vw,330px);
+
+.login-popup-container {
+    width: max(23vw, 330px);
     color: #808080;
     background-color: azure;
     display: flex;
@@ -20,29 +24,34 @@
     animation: FadeIn 0.5s;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-.login-popup-title{
+
+.login-popup-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
 }
-.login-popup-title img{
+
+.login-popup-title img {
     width: 16px;
     cursor: pointer;
 }
-.login-popup-inputs{
+
+.login-popup-inputs {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-.login-popup-inputs input{
+
+.login-popup-inputs input {
     outline: none;
-    bottom: 1px solid #c9c9c9;
+    border: 1px solid #c9c9c9; /* Changed bottom to border for consistency */
     padding: 10px;
     border-radius: 4px;
 }
-.login-popup-container button{
-    bottom: none;
+
+.login-popup-container button {
+    border: none; /* Fixed typo */
     padding: 10px;
     border-radius: 4px;
     color: whitesmoke;
@@ -50,17 +59,29 @@
     font-size: 15px;
     cursor: pointer;
 }
-.login-popup-condition{
+
+.login-popup-condition {
     display: flex;
     align-items: start;
     gap: 8px;
     margin-top: -15px;
 }
-.login-popup-condition input{
+
+.login-popup-condition input {
     margin-top: 5px;
 }
-.login-popup p span{
+
+.login-popup p span {
     color: #1dbf73;
     font-weight: 500;
     cursor: pointer;
+}
+
+@keyframes FadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
