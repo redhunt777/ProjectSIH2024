@@ -13,6 +13,7 @@ import Messages from "./pages/messages/Messages";
 import Message from "./pages/message/Message";
 import MyGigs from "./pages/mygigs/MyGigs";
 import LoginPopUp from './components/LoginPopUp/LoginPopUp'
+import Dashboard from "./pages/dashboard/Dashboard";
 
 
 const App=()=> {
@@ -66,7 +67,7 @@ const App=()=> {
         {
           path: "/gig/:id",
           element: <Gig />,
-        },
+        },        
       ],
     },
     {
@@ -74,8 +75,8 @@ const App=()=> {
       element: <Register />,
     },
     {
-      path: "/login",
-      element: <Home />,
+      path: "/dashboard",
+      element: <Dashboard />,
     },
   ]);
 

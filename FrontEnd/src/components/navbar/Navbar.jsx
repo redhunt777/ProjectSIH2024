@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useEffect, useState, useRef } from "react";  // Added useRef here
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
 
@@ -13,6 +13,8 @@ const Navbar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate(); 
 
+  const userDropdownRef = useRef(null);  // Initialized useRef
+
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
   };
@@ -24,16 +26,29 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleLogin = (userDetails) => {
     setCurrentUser(userDetails);  
-    setIsLoggedIn(true);  // 
+    setIsLoggedIn(true);
   };
 
   const handleLogout = () => {
-    setCurrentUser(null);  
-    setIsLoggedIn(false); 
-    setOpen(false);  
-    navigate("/");  
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setOpen(false);
+    navigate("/");
   };
 
   return (
@@ -55,16 +70,13 @@ const Navbar = () => {
               Sign in
             </button>
           ) : (
-            <div className="user" onClick={() => setOpen(!open)}>
+            <div className="user" ref={userDropdownRef} onClick={() => setOpen(!open)}>
               <img src="/img/man.png" alt="" />
               <span>{currentUser?.name}</span>
               {open && (
                 <div className="options">
-                  <Link className="link" to="/mygigs">
-                    Gigs
-                  </Link>
-                  <Link className="link" to="/add">
-                    Add New Gig
+                  <Link className="link" to="/dashboard">
+                    Dashboard
                   </Link>
                   <Link className="link" to="/orders">
                     Orders
@@ -86,7 +98,7 @@ const Navbar = () => {
         <>
           <hr />
           <div className="menu">
-          <Link className="link menuLink" to="/">
+            <Link className="link menuLink" to="/">
               Graphics & Design
             </Link>
             <Link className="link menuLink" to="/">
