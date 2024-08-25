@@ -17,8 +17,6 @@
       color: #555;
     }
 
-    h1 {
-    }
 
     p {
       color: #999;
@@ -106,6 +104,11 @@
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
+      box-shadow: 0px 0px 10px #00000015;
+      transition: 0.3s;
+      animation: fadeIn 3s;
+      padding: 20px;
+      border-radius: 15px;
     }
   }
 }
