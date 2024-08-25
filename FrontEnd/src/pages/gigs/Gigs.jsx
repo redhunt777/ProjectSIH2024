@@ -22,7 +22,7 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">Prolancer  Graphics & Design </span>
+        <span className="breadcrumbs">Prolancer > Graphics & Design</span>
         <h1>AI Artists</h1>
         <p>
           Explore the boundaries of art and technology with Prolancer's AI artists

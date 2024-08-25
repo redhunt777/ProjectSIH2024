@@ -4,23 +4,31 @@
   justify-content: center;
 
   .container {
-    width: 1400px;
-    padding: 30px 0px;
+    width: 90%;
+    max-width: 1400px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
+    margin: 0 auto; /* Center container horizontally */
 
     .breadcrumbs {
       font-weight: 300;
       text-transform: uppercase;
       font-size: 13px;
       color: #555;
+      margin-bottom: 10px; /* Added margin for spacing */
     }
 
+    h1 {
+      font-weight: 400;
+      margin-bottom: 20px; /* Added margin for spacing */
+    }
 
     p {
       color: #999;
       font-weight: 300;
+      margin-bottom: 20px; /* Added margin for spacing */
     }
 
     .menu {
@@ -36,27 +44,32 @@
         color: #555;
         font-weight: 300;
 
-        input{
-          padding: 5px;
+        input {
+          padding: 10px;
           border: 1px solid lightgrey;
           border-radius: 5px;
           outline: none;
-
-          &::placeholder{
+          font-size: 14px; /* Adjusted font size for readability */
+          
+          &::placeholder {
             color: #999;
           }
         }
 
-        button{
-          padding: 5px 10px;
+        button {
+          padding: 10px 15px;
           background-color: #1dbf73;
           color: white;
           border: none;
           font-weight: 500;
           border-radius: 5px;
           cursor: pointer;
+          font-size: 14px; /* Adjusted font size for readability */
+          
+          &:hover {
+            background-color: #17a15e; /* Darker color on hover */
+          }
         }
-
       }
 
       .right {
@@ -75,26 +88,32 @@
         }
 
         img {
-          width: 15px;
+          width: 20px; /* Adjusted size for better visibility */
           cursor: pointer;
         }
 
         .rightMenu {
           padding: 20px;
           background-color: white;
-          border: 0.5px solid lightgrey;
+          border: 1px solid lightgrey;
           border-radius: 5px;
           position: absolute;
-          top: 30px;
+          top: 40px; /* Adjusted for better alignment */
           right: 0;
           z-index: 9;
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 15px; /* Adjusted gap for spacing */
           color: #555;
 
           span {
             cursor: pointer;
+            padding: 5px; /* Added padding for better touch target */
+            transition: background-color 0.3s; /* Added transition for hover effect */
+
+            &:hover {
+              background-color: #f0f0f0; /* Hover effect */
+            }
           }
         }
       }
@@ -104,11 +123,7 @@
       display: flex;
       justify-content: space-evenly;
       flex-wrap: wrap;
-      box-shadow: 0px 0px 10px #00000015;
-      transition: 0.3s;
-      animation: fadeIn 3s;
-      padding: 20px;
-      border-radius: 15px;
+      gap: 20px; /* Added gap between cards for spacing */
     }
   }
 }

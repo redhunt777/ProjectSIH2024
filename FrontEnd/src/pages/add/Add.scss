@@ -3,24 +3,33 @@
   justify-content: center;
 
   .container {
-    width: 1400px;
-    padding: 50px 0px;
+    width: 90%;
+    max-width: 1400px;
+    padding: 50px 20px; /* Adjusted for better spacing on smaller screens */
+    margin: 0 auto; /* Center container horizontally */
 
     h1 {
       width: max-content;
       margin-bottom: 30px;
       color: gray;
       font-weight: 300;
+      text-align: center; /* Center-align the heading */
     }
 
     .sections {
       display: flex;
-      justify-content: space-between;
-      gap: 100px;
+      flex-direction: column; /* Stack sections vertically on smaller screens */
+      gap: 30px; /* Adjusted gap between sections */
+      
+      @media (min-width: 768px) {
+        flex-direction: row; /* Arrange sections side-by-side on larger screens */
+        justify-content: space-between;
+      }
 
       label {
         color: gray;
         font-size: 18px;
+        margin-bottom: 5px; /* Added margin below labels */
       }
 
       .info,
@@ -28,23 +37,31 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 15px; /* Increased gap between elements */
         justify-content: space-between;
 
         input,
         select,
         textarea {
-          padding: 20px;
+          padding: 15px; /* Adjusted padding for form elements */
+          border: 1px solid #ddd; /* Added border for better appearance */
+          border-radius: 4px; /* Rounded corners for form elements */
         }
 
         button {
           border: none;
-          padding: 20px;
+          padding: 15px; /* Reduced padding for consistency */
           color: white;
           font-weight: 500;
           font-size: 18px;
           background-color: #1dbf73;
           cursor: pointer;
+          border-radius: 4px; /* Rounded corners for button */
+          transition: background-color 0.3s; /* Smooth background color transition */
+
+          &:hover {
+            background-color: #0e5c38; /* Darker color on hover */
+          }
         }
       }
     }

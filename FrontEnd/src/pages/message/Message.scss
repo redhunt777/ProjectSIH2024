@@ -1,14 +1,17 @@
 .message {
   display: flex;
   justify-content: center;
+  
   .container {
     width: 1200px;
     margin: 50px;
+
     .breadcrumbs {
       font-weight: 300;
       font-size: 13px;
       color: #555;
     }
+
     .messages {
       margin: 30px 0px;
       padding: 50px;
@@ -16,7 +19,7 @@
       flex-direction: column;
       gap: 20px;
       height: 500px;
-      overflow: scroll;
+      overflow-y: auto; /* Changed from 'scroll' to 'auto' to prevent horizontal scrollbar */
 
       .item {
         display: flex;
@@ -66,22 +69,22 @@
       justify-content: space-between;
 
       textarea {
-        width: 80%;
-        height: 100px;
+        width: 70%; /* Adjusted width for smaller dialogue box */
+        height: 80px; /* Adjusted height for smaller dialogue box */
         padding: 10px;
         border: 1px solid lightgray;
         border-radius: 10px;
       }
 
-      button{
+      button {
         background-color: #1dbf73;
-        padding: 20px;
+        padding: 12px; /* Adjusted padding for smaller button */
         color: white;
         font-weight: 500;
         border: none;
         border-radius: 10px;
         cursor: pointer;
-        width: 100px;
+        width: 80px; /* Adjusted width for smaller button */
       }
     }
   }
