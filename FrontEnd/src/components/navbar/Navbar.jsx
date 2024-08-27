@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";  // Added useRef here
+import React, { useEffect, useState, useRef } from "react"; // Added useRef here
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import LoginPopUp from "../LoginPopUp/LoginPopUp";
+import { ethers } from "ethers";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -11,9 +12,9 @@ const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   const { pathname } = useLocation();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const userDropdownRef = useRef(null);  // Initialized useRef
+  const userDropdownRef = useRef(null); // Initialized useRef
 
   const isActive = () => {
     window.scrollY > 0 ? setActive(true) : setActive(false);
@@ -28,7 +29,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
+      if (
+        userDropdownRef.current &&
+        !userDropdownRef.current.contains(event.target)
+      ) {
         setOpen(false);
       }
     };
@@ -40,8 +44,42 @@ const Navbar = () => {
   }, []);
 
   const handleLogin = (userDetails) => {
-    setCurrentUser(userDetails);  
+    setCurrentUser(userDetails);
     setIsLoggedIn(true);
+    console.log("User logged in successfully");
+  };
+
+  const handleSignup = (userDetails) => {
+    setCurrentUser(userDetails);
+    setIsLoggedIn(true);
+    console.log("User signed up successfully");
+
+    const { name, email, password, username } = userDetails;
+
+    //creating private key for user
+    const wallet = ethers.Wallet.createRandom();
+    console.log("Wallet created for user: ", wallet);
+
+    //creating public key for user
+    const publicKey = wallet.address;
+    console.log("Public key for user: ", publicKey);
+
+    const privateKey = wallet.privateKey;
+    console.log("Private key for user: ", privateKey);
+
+    //mneumonic for user
+    const mneumonic = wallet.mnemonic;
+    console.log("Mneumonic for user: ", mneumonic);
+
+    //store the user details in the database
+    const data = {
+      name,
+      email,
+      username,
+      publicKey,
+      privateKey,
+      mneumonic,
+    };
   };
 
   const handleLogout = () => {
@@ -70,9 +108,13 @@ const Navbar = () => {
               Sign in
             </button>
           ) : (
-            <div className="user" ref={userDropdownRef} onClick={() => setOpen(!open)}>
+            <div
+              className="user"
+              ref={userDropdownRef}
+              onClick={() => setOpen(!open)}
+            >
               <img src="/img/man.png" alt="" />
-              <span>{currentUser?.name}</span>
+              <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
                   <Link className="link" to="/dashboard">
@@ -130,7 +172,13 @@ const Navbar = () => {
         </>
       )}
 
-      {showLogin && <LoginPopUp setShowLogin={setShowLogin} handleLogin={handleLogin} />}
+      {showLogin && (
+        <LoginPopUp
+          setShowLogin={setShowLogin}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+        />
+      )}
     </div>
   );
 };
