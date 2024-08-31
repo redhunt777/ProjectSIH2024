@@ -79,6 +79,7 @@ const Navbar = () => {
       publicKey,
       privateKey,
       mneumonic,
+      password,
     };
   };
 
